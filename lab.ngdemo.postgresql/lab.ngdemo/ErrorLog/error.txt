@@ -1,0 +1,57 @@
+ERROR 2016-05-04 16:10:26,495  2886ms LoggerHelper           ErrorLog           - Error Log: 
+Npgsql.NpgsqlException (0x80004005): 28P01: password authentication failed for user "sa"
+   at Npgsql.NpgsqlConnector.DoReadSingleMessage(DataRowLoadingMode dataRowLoadingMode, Boolean returnNullForAsyncMessage, Boolean isPrependedMessage)
+   at Npgsql.NpgsqlConnector.ReadSingleMessage(DataRowLoadingMode dataRowLoadingMode, Boolean returnNullForAsyncMessage)
+   at Npgsql.NpgsqlConnector.HandleAuthentication()
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at lab.ngdemo.Models.AppDbContext..ctor() in c:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\Models\AppDbContext.cs:line 15
+   at lab.ngdemo.BootStrapper.InitializeAndSeedDb() in c:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\BootStrapper.cs:line 42
+   at lab.ngdemo.BootStrapper.Run() in c:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\BootStrapper.cs:line 19
+ERROR 2016-05-04 16:25:36,709 11451ms LoggerHelper           ErrorLog           - Error Log: 
+Npgsql.NpgsqlException (0x80004005): 28P01: password authentication failed for user "sa"
+   at Npgsql.NpgsqlConnector.DoReadSingleMessage(DataRowLoadingMode dataRowLoadingMode, Boolean returnNullForAsyncMessage, Boolean isPrependedMessage)
+   at Npgsql.NpgsqlConnector.ReadSingleMessage(DataRowLoadingMode dataRowLoadingMode, Boolean returnNullForAsyncMessage)
+   at Npgsql.NpgsqlConnector.HandleAuthentication()
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at lab.ngdemo.Models.AppDbContext..ctor() in c:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\Models\AppDbContext.cs:line 15
+   at lab.ngdemo.BootStrapper.InitializeAndSeedDb() in c:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\BootStrapper.cs:line 42
+   at lab.ngdemo.BootStrapper.Run() in c:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\BootStrapper.cs:line 19
+ERROR 2016-05-04 16:50:42,996 10194ms LoggerHelper           ErrorLog           - Error Log: 
+Npgsql.NpgsqlException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.NpgsqlConnector.DoReadSingleMessage(DataRowLoadingMode dataRowLoadingMode, Boolean returnNullForAsyncMessage, Boolean isPrependedMessage)
+   at Npgsql.NpgsqlConnector.ReadSingleMessage(DataRowLoadingMode dataRowLoadingMode, Boolean returnNullForAsyncMessage)
+   at Npgsql.NpgsqlConnector.HandleAuthentication()
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at lab.ngdemo.Models.AppDbContext..ctor() in c:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\Models\AppDbContext.cs:line 15
+   at lab.ngdemo.BootStrapper.InitializeAndSeedDb() in c:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\BootStrapper.cs:line 42
+   at lab.ngdemo.BootStrapper.Run() in c:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\BootStrapper.cs:line 19
+ERROR 2016-05-04 16:51:53,409  6551ms LoggerHelper           ErrorLog           - Error Log: 
+System.Data.Entity.Core.ProviderIncompatibleException: An error occurred accessing the database. This usually means that the connection to the database failed. Check that the connection string is correct and that the appropriate DbContext constructor is being used to specify it or find it in the application's config file. See http://go.microsoft.com/fwlink/?LinkId=386386 for information on DbContext and connections. See the inner exception for details of the failure. ---> System.Data.Entity.Core.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---> System.InvalidCastException: [A]Npgsql.NpgsqlConnection cannot be cast to [B]Npgsql.NpgsqlConnection. Type A originates from 'Npgsql, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7' in the context 'Default' at location 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\Npgsql\v4.0_3.0.6.0__5d8b90d52f46fda7\Npgsql.dll'. Type B originates from 'Npgsql, Version=2.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7' in the context 'Default' at location 'C:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\9271baff\1e43d7b9\assembly\dl3\14fb838a\44b0236a_64a4d101\Npgsql.dll'.
+   at Npgsql.NpgsqlServices.GetDbProviderManifestToken(DbConnection connection)
+   at System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   at System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   at System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1.<ResolveManifestToken>b__0(Tuple`3 k)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   at System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.LazyInternalContext.MarkDatabaseInitialized()
+   at System.Data.Entity.Database.Initialize(Boolean force)
+   at lab.ngdemo.BootStrapper.InitializeAndSeedDb() in c:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\BootStrapper.cs:line 42
+   at lab.ngdemo.BootStrapper.Run() in c:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\BootStrapper.cs:line 19
