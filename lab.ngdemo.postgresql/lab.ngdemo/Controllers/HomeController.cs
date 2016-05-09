@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Collections.Generic;
+using lab.ngdemo.Dapper;
 using lab.ngdemo.Models;
 using lab.ngdemo.ViewModels;
 
@@ -11,10 +12,12 @@ namespace lab.ngdemo.Controllers
 {
     public class HomeController : Controller
     {
-        AppDbContext _db = new AppDbContext();
+        //AppDbContext _db = new AppDbContext();
+        IEmployeeRepository _iEmployeeRepository = new EmployeeRepository();
         public ActionResult Index()
         {
-            var userList = _db.Users.ToList();
+            //var userList = _db.Users.ToList();
+            var employeeList = _iEmployeeRepository.GetAll().ToList();
             return View();
         }
 

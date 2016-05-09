@@ -79,4 +79,12 @@ namespace lab.ngdemo.Models
         public virtual ICollection<User> Users { get; set; }
     }
 
+    public class Employee
+    {
+        public int emp_id { get; set; }
+
+        public string emp_name { get; set; }
+
+        public string emp_emailaddress { get; set; }
+    }
 }

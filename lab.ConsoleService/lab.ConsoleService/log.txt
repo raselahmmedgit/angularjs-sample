@@ -1,0 +1,24 @@
+Sunday, May 08, 2016 4:43:03 PM : Schedule BootStrapper ExecuteSchedule(): IsQuartzSchedule : True : Sunday, May 08, 2016 4:43:03 PM
+Sunday, May 08, 2016 4:43:03 PM : Schedule BootStrapper ExecuteSchedule(): IsQuartzSchedule : if True : Sunday, May 08, 2016 4:43:03 PM
+Sunday, May 08, 2016 4:43:04 PM : Schedule QuartzScheduleManager Daily(): IsScheduleHourWise : True : ScheduleDailyTimeInHours : 4 : Sunday, May 08, 2016 4:43:04 PM
+Sunday, May 08, 2016 4:43:07 PM : Quartz Schedule Execute Start: Sunday, May 08, 2016 4:43:07 PM
+Sunday, May 08, 2016 4:43:07 PM : TestSchedule() - Sunday, May 08, 2016 4:43:07 PM
+Sunday, May 08, 2016 4:43:07 PM : Quartz Schedule Execute End: Sunday, May 08, 2016 4:43:07 PM
+Sunday, May 08, 2016 4:47:04 PM : Quartz Schedule Execute Start: Sunday, May 08, 2016 4:47:04 PM
+Sunday, May 08, 2016 4:47:04 PM : TestSchedule() - Sunday, May 08, 2016 4:47:04 PM
+Sunday, May 08, 2016 4:47:04 PM : Quartz Schedule Execute End: Sunday, May 08, 2016 4:47:04 PM
+Sunday, May 08, 2016 4:51:04 PM : Quartz Schedule Execute Start: Sunday, May 08, 2016 4:51:04 PM
+Sunday, May 08, 2016 4:51:04 PM : TestSchedule() - Sunday, May 08, 2016 4:51:04 PM
+Sunday, May 08, 2016 4:51:04 PM : Quartz Schedule Execute End: Sunday, May 08, 2016 4:51:04 PM
+Sunday, May 08, 2016 5:04:34 PM : Schedule BootStrapper ExecuteSchedule(): IsQuartzSchedule : True : Sunday, May 08, 2016 5:04:34 PM
+Sunday, May 08, 2016 5:04:34 PM : Schedule BootStrapper ExecuteSchedule(): IsQuartzSchedule : if True : Sunday, May 08, 2016 5:04:34 PM
+Sunday, May 08, 2016 5:04:34 PM : Schedule QuartzScheduleManager Daily(): IsScheduleHourWise : True : ScheduleDailyTimeInHours : 4 : Sunday, May 08, 2016 5:04:34 PM
+Sunday, May 08, 2016 5:04:34 PM : Quartz Schedule Execute Start: Sunday, May 08, 2016 5:04:34 PM
+Sunday, May 08, 2016 5:04:34 PM : TestSchedule() - Sunday, May 08, 2016 5:04:34 PM
+Sunday, May 08, 2016 5:04:34 PM : Quartz Schedule Execute End: Sunday, May 08, 2016 5:04:34 PM
+Sunday, May 08, 2016 5:08:34 PM : Quartz Schedule Execute Start: Sunday, May 08, 2016 5:08:34 PM
+Sunday, May 08, 2016 5:08:34 PM : TestSchedule() - Sunday, May 08, 2016 5:08:34 PM
+Sunday, May 08, 2016 5:08:34 PM : Quartz Schedule Execute End: Sunday, May 08, 2016 5:08:34 PM
+Sunday, May 08, 2016 5:12:34 PM : Quartz Schedule Execute Start: Sunday, May 08, 2016 5:12:34 PM
+Sunday, May 08, 2016 5:12:34 PM : TestSchedule() - Sunday, May 08, 2016 5:12:34 PM
+Sunday, May 08, 2016 5:12:34 PM : Quartz Schedule Execute End: Sunday, May 08, 2016 5:12:34 PM

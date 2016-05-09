@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <connectionStrings>
+    <add name="sqlConnection"  connectionString="Server=localhost;Database=test_db;User Id=postgres;Password=sa123456;Port=5432;" providerName="Npgsql" />
+  </connectionStrings>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+  </startup>
+  <appSettings>
+    <add key="ErrorLogPath" value="C:\Users\user\Documents\GitHub\angularjs-sample\lab.ConsoleService\lab.ConsoleService" />
+    <add key="LogPath" value="C:\Users\user\Documents\GitHub\angularjs-sample\lab.ConsoleService\lab.ConsoleService" />
+    <add key="IsQuartzSchedule" value="true" />
+    <add key="IsScheduleHourWise" value="true" />
+    <add key="ScheduleDailyTimeInHours" value="4" />
+    <add key="ScheduleDailyHour" value="16" />
+    <add key="ScheduleDailyMinute" value="35" />
+    <add key="ServiceName" value="My Lab Email Windows Service" />
+  </appSettings>
+</configuration>

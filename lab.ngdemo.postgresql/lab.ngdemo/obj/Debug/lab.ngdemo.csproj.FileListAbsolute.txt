@@ -128,6 +128,7 @@ C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\lab.ngdemo.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\lab.ngdemo.pdb
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\Antlr3.Runtime.dll
+C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\Dapper.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\EntityFramework.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\EntityFramework.SqlServer.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\log4net.dll
@@ -160,6 +161,8 @@ C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\System.Web.WebPages.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\System.Web.WebPages.Razor.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\WebGrease.dll
+C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\Dapper.pdb
+C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\Dapper.xml
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\log4net.xml
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\Npgsql.xml
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\Npgsql.EntityFramework.xml
@@ -195,6 +198,6 @@ C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\fr\Npgsql.resources.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\ja\Npgsql.resources.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\bin\zh-CN\Npgsql.resources.dll
+C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\obj\Debug\lab.ngdemo.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\obj\Debug\lab.ngdemo.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\obj\Debug\lab.ngdemo.pdb
-C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo.postgresql\lab.ngdemo\obj\Debug\lab.ngdemo.csprojResolveAssemblyReference.cache
