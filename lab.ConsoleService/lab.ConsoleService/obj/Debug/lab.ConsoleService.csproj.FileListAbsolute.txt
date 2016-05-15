@@ -19,3 +19,6 @@ C:\Users\user\Documents\GitHub\angularjs-sample\lab.ConsoleService\lab.ConsoleSe
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ConsoleService\lab.ConsoleService\bin\Debug\lab.ConsoleService.application
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ConsoleService\lab.ConsoleService\obj\Debug\lab.ConsoleService.exe.manifest
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ConsoleService\lab.ConsoleService\obj\Debug\lab.ConsoleService.application
+C:\Users\user\Documents\GitHub\angularjs-sample\lab.ConsoleService\lab.ConsoleService\bin\Debug\Dapper.dll
+C:\Users\user\Documents\GitHub\angularjs-sample\lab.ConsoleService\lab.ConsoleService\bin\Debug\Dapper.pdb
+C:\Users\user\Documents\GitHub\angularjs-sample\lab.ConsoleService\lab.ConsoleService\bin\Debug\Dapper.xml

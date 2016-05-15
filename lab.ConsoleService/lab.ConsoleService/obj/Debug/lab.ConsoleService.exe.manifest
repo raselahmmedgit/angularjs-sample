@@ -66,14 +66,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="lab.ConsoleService.exe" size="15360">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Dapper.dll" size="120320">
+      <assemblyIdentity name="Dapper" version="1.40.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>1tBNTA+f6qnP9iwPJIExH4ANNyWX11kbIiyFzuMyFXo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="lab.ConsoleService.exe" size="19456">
       <assemblyIdentity name="lab.ConsoleService" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eGCWeNINmga0idfbzXQWwDPudFEEDEKffVcX1Dnl7a0=</dsig:DigestValue>
+        <dsig:DigestValue>+pAQRYUC9E+xYR44QkO+uDsdhRA0+plFV/fDiixXJHU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

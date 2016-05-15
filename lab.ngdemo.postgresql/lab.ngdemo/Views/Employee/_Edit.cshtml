@@ -1,0 +1,19 @@
+﻿@model lab.ngdemo.Models.Employee
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Employee:</legend>
+        @Html.ValidationSummary(true)
+        <div id="editEmployeeMess" class="error invisible">
+        </div>
+        @Html.HiddenFor(model => model.emp_id)
+        <div class="editor-field">
+            <strong>@Html.LabelFor(model => model.emp_name): </strong>
+            @Html.EditorFor(model => model.emp_name)
+            @Html.ValidationMessageFor(model => model.emp_name)
+        </div>
+        <p>
+            <input type="submit" name="name" value="Edit" />
+        </p>
+    </fieldset>
+}

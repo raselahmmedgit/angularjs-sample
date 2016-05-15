@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using lab.ConsoleService.Helper;
+using lab.ConsoleService.Model;
 
 namespace lab.ConsoleService
 {
@@ -13,11 +14,21 @@ namespace lab.ConsoleService
         {
             try
             {
-                Console.WriteLine("Schedule Execute OnStart() 1: " + DateTime.Now.ToString("F"));
+                NpgsqlHelper.GetAll();
 
-                BootStrapper.Run();
+                NpgsqlHelper.GetEmployeeList();
 
-                Console.WriteLine("Schedule Execute OnStart() 2: " + DateTime.Now.ToString("F"));
+                var employee = new Employee {emp_id = 3, emp_name = "Azim", emp_emailaddress = "azim@gmail.com"};
+
+                //NpgsqlHelper.InsertEmployee(employee);
+                //NpgsqlHelper.UpdateEmployee(employee);
+                //NpgsqlHelper.DeleteEmployee(employee);
+
+                //Console.WriteLine("Schedule Execute OnStart() 1: " + DateTime.Now.ToString("F"));
+
+                //BootStrapper.Run();
+
+                //Console.WriteLine("Schedule Execute OnStart() 2: " + DateTime.Now.ToString("F"));
 
                 Console.ReadKey();
             }

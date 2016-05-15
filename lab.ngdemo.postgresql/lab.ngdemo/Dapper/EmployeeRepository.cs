@@ -7,59 +7,105 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Npgsql;
 
 namespace lab.ngdemo.Dapper
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        //private string strCon = String.Format("Server=localhost;Port=5432;User Id=postgres;Password=sa123456;Database=test_db;");
-        private IDbConnection _db = new SqlConnection(ConfigurationManager.ConnectionStrings["AppDbContext"].ConnectionString);
-        //private IDbConnection _db = new SqlConnection(String.Format("Server=localhost;Port=5432;User Id=postgres;Password=sa123456;Database=test_db;"));
         public List<Employee> GetAll()
         {
-            return this._db.Query<Employee>("SELECT * FROM employee").ToList();
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["AppDbContext"].ConnectionString.ToString()))
+            {
+                conn.Open();
+
+                var employeeList = conn.Query<Employee>("SELECT emp_id, emp_name, emp_emailaddress FROM public.employee").ToList();
+
+                return employeeList;
+            }
         }
 
         public Employee Find(int id)
         {
-            return this._db.Query<Employee>("SELECT * FROM employee WHERE emp_id = @emp_id", new { id }).SingleOrDefault();
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["sqlConnection"].ConnectionString.ToString()))
+            {
+                conn.Open();
+
+                var employee = conn.Query<Employee>("SELECT emp_id, emp_name, emp_emailaddress FROM public.employee WHERE emp_id = @emp_id", new { id }).SingleOrDefault();
+
+                return employee;
+            }
         }
 
-        public Employee Add(Employee emp)
+        public Employee Insert(Employee employee)
         {
-            var sqlQuery = "INSERT INTO employee (emp_name, emp_emailaddress) VALUES(@emp_name, @emp_emailaddress); " + "SELECT CAST(SCOPE_IDENTITY() as int)";
-            var empId = this._db.Query<int>(sqlQuery, emp).Single();
-            emp.emp_id = empId;
-            return emp;
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["sqlConnection"].ConnectionString.ToString()))
+            {
+                conn.Open();
+
+                const string sqlQuery = "INSERT INTO public.employee(emp_id, emp_name, emp_emailaddress) VALUES(@emp_id, @emp_name, @emp_emailaddress) RETURNING emp_id";
+
+                var employeeId = conn.Query<int>(sqlQuery, employee).SingleOrDefault();
+
+                employee.emp_id = employeeId;
+
+                return employee;
+            }
         }
 
-        public Employee Update(Employee emp)
+        public Employee Update(Employee employee)
         {
-            var sqlQuery =
-                "UPDATE employee " +
-                "SET emp_name = @emp_name, " +
-                "    emp_emailaddress  = @emp_emailaddress, " +
-                "WHERE emp_id = @emp_id";
-            this._db.Execute(sqlQuery, emp);
-            return emp;
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["sqlConnection"].ConnectionString.ToString()))
+            {
+                conn.Open();
+
+                const string sqlQuery = "UPDATE public.employee SET emp_name = @emp_name, emp_emailaddress = @emp_emailaddress WHERE emp_id = @emp_id";
+                conn.Execute(sqlQuery, employee);
+
+                return employee;
+            }
         }
 
-        public void Remove(int id)
+        public void Delete(Employee employee)
         {
-            var sqlQuery =
-                "DELETE FROM employee " +
-                "WHERE emp_id = @emp_id";
-            this._db.Execute(sqlQuery);
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["sqlConnection"].ConnectionString.ToString()))
+            {
+                conn.Open();
+
+                const string sqlQuery = "DELETE FROM public.employee WHERE emp_id = @emp_id";
+
+                conn.Execute(sqlQuery, employee);
+            }
         }
 
         public Employee GetById(int id)
         {
-            using (var multipleResults = this._db.QueryMultiple("GetEmployeeByID", new { Id = id }, commandType: CommandType.StoredProcedure))
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["AppDbContext"].ConnectionString.ToString()))
             {
-                var emp = multipleResults.Read<Employee>().SingleOrDefault();
+                conn.Open();
+
+                var emp = Find(id);
                 
-                return emp;
+                var employee = conn.Query("SELECT emp_id, emp_name, emp_emailaddress FROM public.employee WHERE emp_id = @emp_id", emp).SingleOrDefault();
+
+                return employee;
             }
+        }
+
+        public List<Employee> GetFunction()
+        {
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["sqlConnection"].ConnectionString.ToString()))
+            {
+                conn.Open();
+
+                using (var multipleResults = conn.QueryMultiple("SELECT public.get_employees()", commandType: CommandType.StoredProcedure))
+                {
+                    var employees = multipleResults.Read<Employee>().ToList();
+
+                    return employees;
+                }
+            }
+
         }
     }
 
@@ -67,9 +113,10 @@ namespace lab.ngdemo.Dapper
     {
         List<Employee> GetAll();
         Employee Find(int id);
-        Employee Add(Employee emp);
+        Employee Insert(Employee emp);
         Employee Update(Employee emp);
-        void Remove(int id);
+        void Delete(Employee employee);
         Employee GetById(int id);
+        List<Employee> GetFunction();
     }
 }
