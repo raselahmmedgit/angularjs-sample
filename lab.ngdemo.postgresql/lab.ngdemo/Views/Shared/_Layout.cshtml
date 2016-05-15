@@ -8,8 +8,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
     <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/App/app.js"></script>
+    <script src="~/Scripts/App/App.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -52,6 +54,18 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - ng apps</p>
         </footer>
+        <div class="modal fade" id="appModal" tabindex="-1" role="basic" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog " id="appModalDialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title" id="appModalDialogTitle"></h4>
+                    </div>
+                    <div class="modal-body" id="appModalDialogContainer">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @RenderSection("scripts", required: false)
 </body>
