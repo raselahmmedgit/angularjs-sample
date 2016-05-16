@@ -70,7 +70,7 @@ var App = function () {
     };
 
     var modalHandler = function () {
-        $('body').undelegate('.appModal', 'click').on('click', '.appModal', function (event) {
+        $('body').undelegate('.lnkAppModal', 'click').on('click', '.lnkAppModal', function (event) {
 
             event.preventDefault();
             var url = $(this).attr('href');
@@ -124,6 +124,23 @@ var App = function () {
         });
     };
 
+    var deleteHandler = function () {
+
+        $('body').undelegate('.lnkAppDelete', 'click').on('click', '.lnkAppDelete', function (event) {
+
+            event.preventDefault();
+            var url = $(this).attr('href');
+            var gridId = $(this).data('gridid');
+
+            App.sendAjaxRequest(url, {}, true, function (result) {
+                console.log(result);
+            }, true, false);
+
+        });
+        
+        return false;
+    };
+
     var modalShow = function () {
 
         $('body').find('#appModal').each(function () {
@@ -145,10 +162,11 @@ var App = function () {
         var contentType = (isJson) ? "application/json" : "text/plain";
         var dataType = (isJson) ? "json" : "html";
         if (!isAsync) {
-            App.preloader({
-                target: target,
-                show: true
-            });
+            //App.preloader({
+            //    target: target,
+            //    show: true
+            //});
+            console.log('isAsync');
         }
 
         return $.ajax({
@@ -158,25 +176,28 @@ var App = function () {
             contentType: contentType,
             dataType: dataType,
             beforeSend: function (xhr) {
-                App.preloader({
-                    target: target,
-                    show: true
-                });
+                //App.preloader({
+                //    target: target,
+                //    show: true
+                //});
+                console.log('beforeSend');
             },
             success: function (successData) {
                 if (!isAsync) {
-                    App.preloader({
-                        target: target,
-                        show: false
-                    });
+                    //App.preloader({
+                    //    target: target,
+                    //    show: false
+                    //});
+                    console.log('isAsync');
                 }
                 return typeof (callback) == 'function' ? callback(successData) : successData;
             },
             complete: function (xhr, status) {
-                App.preloader({
-                    target: target,
-                    show: false
-                });
+                //App.preloader({
+                //    target: target,
+                //    show: false
+                //});
+                console.log('complete');
             },
             error: function (exception) {
                 return false;
@@ -354,6 +375,7 @@ var App = function () {
 
     var actionHandler = function () {
         modalHandler();
+        deleteHandler();
     };
 
     var initializeApp = function () {
