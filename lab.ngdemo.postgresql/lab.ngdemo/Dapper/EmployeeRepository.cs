@@ -27,11 +27,11 @@ namespace lab.ngdemo.Dapper
 
         public Employee Find(int id)
         {
-            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["sqlConnection"].ConnectionString.ToString()))
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["AppDbContext"].ConnectionString.ToString()))
             {
                 conn.Open();
 
-                var employee = conn.Query<Employee>("SELECT emp_id, emp_name, emp_emailaddress FROM public.employee WHERE emp_id = @emp_id", new { id }).SingleOrDefault();
+                var employee = conn.Query<Employee>("SELECT emp_id, emp_name, emp_emailaddress FROM public.employee WHERE emp_id = " + id).SingleOrDefault();
 
                 return employee;
             }
@@ -39,7 +39,7 @@ namespace lab.ngdemo.Dapper
 
         public Employee Insert(Employee employee)
         {
-            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["sqlConnection"].ConnectionString.ToString()))
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["AppDbContext"].ConnectionString.ToString()))
             {
                 conn.Open();
 
@@ -55,7 +55,7 @@ namespace lab.ngdemo.Dapper
 
         public Employee Update(Employee employee)
         {
-            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["sqlConnection"].ConnectionString.ToString()))
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["AppDbContext"].ConnectionString.ToString()))
             {
                 conn.Open();
 
@@ -68,7 +68,7 @@ namespace lab.ngdemo.Dapper
 
         public void Delete(Employee employee)
         {
-            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["sqlConnection"].ConnectionString.ToString()))
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["AppDbContext"].ConnectionString.ToString()))
             {
                 conn.Open();
 
@@ -84,9 +84,7 @@ namespace lab.ngdemo.Dapper
             {
                 conn.Open();
 
-                var emp = Find(id);
-                
-                var employee = conn.Query("SELECT emp_id, emp_name, emp_emailaddress FROM public.employee WHERE emp_id = @emp_id", emp).SingleOrDefault();
+                var employee = Find(id);
 
                 return employee;
             }

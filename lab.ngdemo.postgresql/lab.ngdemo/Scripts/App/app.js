@@ -1,72 +1,20 @@
 ﻿
 var App = function () {
 
-    var preloaderHandler = function (options) {
-        options = $.extend(true, {}, options);
-        options.animate = true;
-        options.overlayColor = '#555';//'none';
-        if (options.show) {
-            var html = '';
-            if (options.animate) {
-                html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '') + '">' + '<div class="block-spinner-bar"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>' + '</div>';
-            } //else if (options.iconOnly) {
-            //    html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '') + '"><img src="' + this.getGlobalImgPath() + 'loading-spinner-grey.gif" align=""></div>';
-            //} else if (options.textOnly) {
-            //    html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '') + '"><span>&nbsp;&nbsp;' + (options.message ? options.message : 'LOADING...') + '</span></div>';
-            //} else {
-            //    html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '') + '"><img src="' + this.getGlobalImgPath() + 'loading-spinner-grey.gif" align=""><span>&nbsp;&nbsp;' + (options.message ? options.message : 'LOADING...') + '</span></div>';
-            //}
-            if (options.target) { // element blocking
+    var preloaderShow = function () {
 
-                var el = $(options.target).is(document) ? $('body') : $(options.target);
-                if (el.height() <= ($(window).height())) {
-                    options.cenrerY = true;
-                }
-                el.block({
-                    message: html,
-                    baseZ: options.zIndex ? options.zIndex : 9999,
-                    centerY: options.cenrerY !== undefined ? options.cenrerY : false,
-                    css: {
-                        top: '10%',
-                        border: '0',
-                        padding: '0',
-                        backgroundColor: 'none'
-                    },
-                    overlayCSS: {
-                        backgroundColor: options.overlayColor ? options.overlayColor : '#555',
-                        opacity: options.boxed ? 0.05 : 0.1,
-                        cursor: 'wait'
-                    }
-                });
-            } else { // page blocking
-                $.blockUI({
-                    message: html,
-                    baseZ: options.zIndex ? options.zIndex : 9999,
-                    css: {
-                        border: '0',
-                        padding: '0',
-                        backgroundColor: 'none'
-                    },
-                    overlayCSS: {
-                        backgroundColor: options.overlayColor ? options.overlayColor : '#555',
-                        opacity: options.boxed ? 0.05 : 0.1,
-                        cursor: 'wait'
-                    }
-                });
-            }
-        } else {
-            if (options.target) {
-                var el = $(options.target).is(document) ? $('body') : $(options.target);
-                el.unblock({
-                    onUnblock: function () {
-                        el.css('position', '');
-                        el.css('zoom', '');
-                    }
-                });
-            } else {
-                $.unblockUI();
-            }
-        }
+        $('body').find('#appModalLoading').each(function () {
+            var modal = $(this);
+            modal.modal('show');
+        });
+    };
+
+    var preloaderHide = function () {
+
+        $('body').find('#appModalLoading').each(function () {
+            var modal = $(this);
+            modal.modal('hide');
+        });
     };
 
     var modalHandler = function () {
@@ -109,19 +57,20 @@ var App = function () {
         });
 
 
-        //BUtton Click Animate Scroll to Destination
-        $('a.scrollonclick[href*=#]:not([href=#])').click(function () {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                }
-            }
-        });
+        ////BUtton Click Animate Scroll to Destination
+        //$('a.scrollonclick[href*=#]:not([href=#])').click(function () {
+        //    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        //        var target = $(this.hash);
+        //        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        //        if (target.length) {
+        //            $('html,body').animate({
+        //                scrollTop: target.offset().top
+        //            }, 1000);
+        //            return false;
+        //        }
+        //    }
+        //    return false;
+        //});
     };
 
     var deleteHandler = function () {
@@ -162,11 +111,7 @@ var App = function () {
         var contentType = (isJson) ? "application/json" : "text/plain";
         var dataType = (isJson) ? "json" : "html";
         if (!isAsync) {
-            //App.preloader({
-            //    target: target,
-            //    show: true
-            //});
-            console.log('isAsync');
+            App.preloaderShow();
         }
 
         return $.ajax({
@@ -176,28 +121,16 @@ var App = function () {
             contentType: contentType,
             dataType: dataType,
             beforeSend: function (xhr) {
-                //App.preloader({
-                //    target: target,
-                //    show: true
-                //});
-                console.log('beforeSend');
+                App.preloaderShow();
             },
             success: function (successData) {
                 if (!isAsync) {
-                    //App.preloader({
-                    //    target: target,
-                    //    show: false
-                    //});
-                    console.log('isAsync');
+                    App.preloaderHide();
                 }
                 return typeof (callback) == 'function' ? callback(successData) : successData;
             },
             complete: function (xhr, status) {
-                //App.preloader({
-                //    target: target,
-                //    show: false
-                //});
-                console.log('complete');
+                App.preloaderHide();
             },
             error: function (exception) {
                 return false;
@@ -386,7 +319,8 @@ var App = function () {
         init: initializeApp,
         modalShow: modalShow,
         modalHide: modalHide,
-        preloader: preloaderHandler,
+        preloaderShow: preloaderShow,
+        preloaderHide: preloaderHide,
         sendAjaxRequest: sendAjaxRequest,
         loadDropdown: loadDropdown,
         toastrNotifier: toastrNotifier,

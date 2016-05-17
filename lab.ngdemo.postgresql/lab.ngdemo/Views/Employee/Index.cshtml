@@ -6,7 +6,9 @@
         Employee ngGrid Sample
     </h2>
     <p>
-        @Html.ActionLink("Create Employee", "Create", "Employee", new { @class = "lnkAppModal btn btn-default" })
+        
+        <a href="@Url.Action("Create", "Employee")" class="lnkAppModal btn btn-default" data-modal-icon="fa fa-tasks" data-modal-title="Add Employee" id="btnAddEmployee" title='Add'>Create</a>
+
     </p>
 </div>
 <script src="@Url.Content("~/Scripts/App/Employee.js")" type="text/javascript"></script>

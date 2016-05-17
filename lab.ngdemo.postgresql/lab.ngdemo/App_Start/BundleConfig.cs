@@ -27,6 +27,21 @@ namespace lab.ngdemo
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                      "~/Scripts/angular.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/toastr").Include(
+                      "~/Content/toastr.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
+                      "~/Scripts/toastr.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ng-grid").Include(
+                      "~/Scripts/ng-grid.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/ng-grid").Include(
+                      "~/Content/ng-grid.min.css"));
+
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
             BundleTable.EnableOptimizations = true;
