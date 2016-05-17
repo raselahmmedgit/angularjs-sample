@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div id="employee-list">
+    <h2>
+        Employee JQGrid Sample
+    </h2>
+    <p>
+
+        <a href="@Url.Action("Create", "Employee")" class="lnkAppModal btn btn-default" data-modal-icon="fa fa-tasks" data-modal-title="Add Employee" id="btnAddEmployee" title='Add'>Create</a>
+
+    </p>
+    <p>
+        <table id="EmployeeJQGrid" class="scroll" cellpadding="0" cellspacing="0"></table>
+        <div id="EmployeeJQGridPager"></div>
+    </p>
+</div>
+<script src="@Url.Content("~/Scripts/App/Employee.js")" type="text/javascript"></script>
+<script type="text/javascript">
+
+    function applyjqgridbootstrap()
+    {
+        $(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
+        $(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");
+        $(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
+        $(".ui-jqgrid-pager").removeClass("ui-state-default");
+        $(".ui-jqgrid").removeClass("ui-widget-content");
+
+        $(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
+        $(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
+        $(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
+        $(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
+        $(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
+        $(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
+        $(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
+        $(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
+        $(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
+
+        $(".ui-icon.ui-icon-seek-prev").wrap("");
+        $(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
+
+        $(".ui-icon.ui-icon-seek-first").wrap("");
+        $(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");
+
+        $(".ui-icon.ui-icon-seek-next").wrap("");
+        $(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
+
+        $(".ui-icon.ui-icon-seek-end").wrap("");
+        $(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");
+    }
+
+    $(document).ready(function () {
+
+        //Employee.init();
+
+        $("#EmployeeJQGrid").jqGrid({
+            url: "/Employee/GetEmployees",
+            datatype: "json",
+            mtype: 'POST',
+            colNames: ['emp_id',
+                      'emp_id',
+                      'emp_name',
+                      'emp_emailaddress',
+                     'Details', 'Edit', 'Delete'],
+            colModel: [
+                { name: 'emp_id', index: 'emp_id', key: true, width: 0, hidden: true },
+                { name: 'emp_id', index: 'emp_id', width: 0, align: 'left', hidden: true },
+                { name: 'emp_name', index: 'emp_name', width: 250, align: 'left', hidden: false },
+                { name: 'emp_emailaddress', index: 'emp_emailaddress', width: 250, align: 'left', hidden: false },
+                { name: 'Details', index: 'Details', width: 100, align: 'center' },
+                { name: 'Edit', index: 'Edit', width: 100, align: 'center' },
+                { name: 'Delete', index: 'Delete', width: 100, align: 'center' }
+            ],
+            rowNum: 10,                                //default page size
+            rowList: [10, 20, 30, 40, 50],                 //option of page size
+            height: "100%",                          //grid height
+            sortname: 'id',                     //default sort column name
+            sortorder: "desc",                       //sorting order
+            viewrecords: true,                         //by default records show?
+            multiselect: false,                        //checkbox list
+            beforeRequest: function () {
+                applyjqgridbootstrap();
+                },
+            pager: "#EmployeeJQGridPager"
+
+        });
+
+    });
+
+</script>
+
+
+
