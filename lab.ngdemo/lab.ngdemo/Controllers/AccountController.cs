@@ -175,7 +175,7 @@ namespace lab.ngdemo.Controllers
                     
                     if (user != null)
                     {
-
+                         
                         if (IsValidateUser(user.UserName, model.OldPassword, user))
                         {
                             byte[] password = Encoding.ASCII.GetBytes(model.NewPassword);
