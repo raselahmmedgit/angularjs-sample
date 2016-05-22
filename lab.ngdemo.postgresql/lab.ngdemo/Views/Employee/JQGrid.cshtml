@@ -58,9 +58,9 @@
             datatype: "json",
             mtype: 'POST',
             colNames: ['emp_id',
-                      'emp_id',
-                      'emp_name',
-                      'emp_emailaddress',
+                      'ID',
+                      'Name',
+                      'Email Address',
                      'Details', 'Edit', 'Delete'],
             colModel: [
                 { name: 'emp_id', index: 'emp_id', key: true, width: 0, hidden: true },
@@ -79,7 +79,7 @@
             viewrecords: true,                         //by default records show?
             multiselect: false,                        //checkbox list
             beforeRequest: function () {
-                applyjqgridbootstrap();
+                //applyjqgridbootstrap();
                 },
             pager: "#EmployeeJQGridPager"
 
@@ -89,5 +89,4 @@
 
 </script>
 
-
-
+@*https://github.com/Soliman/jqGrid.bootstrap*@
