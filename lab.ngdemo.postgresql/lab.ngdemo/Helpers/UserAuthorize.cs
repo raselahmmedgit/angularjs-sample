@@ -38,7 +38,7 @@ namespace lab.ngdemo.Helpers
                 base.OnAuthorization(filterContext);
             }
         }
-
+        
         protected ActionResult CreateResult(AuthorizationContext filterContext)
         {
             var viewName = "~/Views/Shared/AccessDenied.cshtml";

@@ -21,6 +21,11 @@ namespace lab.ngdemo.Controllers
             return View();
         }
 
+        public ActionResult HI()
+        {
+            return View();
+        }
+
         public ActionResult TreeView()
         {
             return View();
