@@ -16,7 +16,6 @@ namespace lab.ngdemo.Controllers
         [OutputCache(Duration = 0)]
         public ActionResult LineChartAjax()
         {
-            {
                 //“cols”: [
                 //{"id":"","label":"year","type":"string"},
                 //{"id":"","label":"sales","type":"number"},
