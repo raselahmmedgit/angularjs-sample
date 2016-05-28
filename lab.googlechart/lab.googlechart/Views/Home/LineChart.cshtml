@@ -31,7 +31,6 @@
 
     //$(document).ready(function () {
 
-
     //    google.charts.load('current', { packages: ['corechart', 'line'] });
     //    google.charts.setOnLoadCallback(drawCurveTypes);
 
@@ -72,60 +71,63 @@
     //        chart.draw(data, options);
     //    }
 
+    //});
+
+</script>
+
+<script type="text/javascript">
+
+    //$(document).ready(function () {
+
     //    google.charts.load("visualization", "1", { packages: ["corechart"] });
     //    google.charts.setOnLoadCallback(drawChart);
 
     //    function drawChart() {
-
-    //        var jsonData = $.ajax({
-    //            url: "/Home/LineChartAjax",
-    //            dataType: "json",
-    //            async: false
-    //        }).responseText;
-
-    //        var obj = window.JSON.stringify(jsonData);
-    //        var data = google.visualization.arrayToDataTable(obj);
-
+            
     //        var options = {
-    //            title: 'Kometschuh.de Trackerdaten'
+    //            title: 'Performance'
     //        };
 
-    //        var chart = new google.visualization.LineChart(
-    //            document.getElementById('chart_div2'));
-    //        chart.draw(data, options);
+    //        $.get("/Home/LineChartAjax", {}, function (result) {
+    //            var data = google.visualization.arrayToDataTable(result);
+
+    //            var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+    //            chart.draw(data, options);
+    //        });
     //    }
 
     //});
+
 </script>
 
 <script type="text/javascript">
 
     $(document).ready(function () {
 
-        function drawChartByClick() {
-            var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Work', 11],
-                ['Eat', 2],
-                ['Commute', 2],
-                ['Watch TV', 2],
-                ['Sleep', 7]
-            ]);
+        function drawChartByClick(id, name) {
 
             var options = {
-                title: 'My Daily Activities'
+                title: 'Performance'
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div3'));
-            chart.draw(data, options);
+            var url = '/Home/LineChartAjax?id=' + id + '&name=' + name;
+
+            $.get(url, {}, function (result) {
+                var data = google.visualization.arrayToDataTable(result);
+
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div3'));
+                chart.draw(data, options);
+            });
         }
+
         function initialize() {
             $('#btnShow').click(function () {
-                drawChartByClick();
+                drawChartByClick(1, 'rasel');
             });
         }
         google.charts.setOnLoadCallback(initialize);
         google.charts.load("visualization", "1", { packages: ["corechart"] });
 
     });
+
 </script>
