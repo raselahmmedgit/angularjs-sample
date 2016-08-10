@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace lab.ngdemo.Helpers
+namespace lab.googlechart.Helpers
 {
     public static class SelectListItemExtension
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 
-namespace lab.ngdemo
+namespace lab.googlechart
 {
     public class EmailService : IIdentityMessageService
     {

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="App">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,12 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/ng-grid.min.css" rel="stylesheet" />
     <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/ng-grid.min.js"></script>
+    <script src="~/Scripts/toastr.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/App/App.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,12 +25,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    
+
                     @if (Constants.IsAuthenticated())
                     {
                         if (Constants.IsUserInRole("Admin"))
@@ -39,7 +44,7 @@
                             <li>@Html.ActionLink("Kendo UI ng", "Index", "KendoUI")</li>
                         }
                     }
-        
+
                 </ul>
                 @Html.Partial("_LogOnPartial")
             </div>
@@ -51,7 +56,35 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - ng apps</p>
         </footer>
+        <div class="modal fade" id="appModal" tabindex="-1" role="basic" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog " id="appModalDialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="appModalDialogTitle"></h4>
+                    </div>
+                    <div class="modal-body" id="appModalDialogContainer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="appModalLoading" tabindex="-1" role="basic" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog " id="appModalDialog" style="width: 32px !important; padding-top: 50% !important; padding-bottom: 50% !important; padding-left: 0px !important; padding-right: 0px !important;">
+                <div class="modal-content" style="border:none !important; border-radius: 0px !important;">
+                    <div class="loading">
+                        <img src="~/Content/ajax-loader.gif" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(function () {
+            App.init();
+        })
+    </script>
+
 </body>
 </html>

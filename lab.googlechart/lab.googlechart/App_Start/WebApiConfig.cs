@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace lab.ngdemo
+namespace lab.googlechart
 {
     public static class WebApiConfig
     {

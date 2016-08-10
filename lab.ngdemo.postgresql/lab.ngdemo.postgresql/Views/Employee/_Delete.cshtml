@@ -1,0 +1,15 @@
+﻿@model lab.ngdemo.postgresql.Models.Employee
+<script src="~/Scripts/App/App.js"></script>
+@Html.HiddenFor(model => model.emp_id)
+<div class="form-group">
+    <label for="emp_emailaddress">Email address:</label>
+    @Html.DisplayFor(model => model.emp_emailaddress)
+</div>
+<div class="form-group">
+    <label for="emp_name">Name:</label>
+    @Html.DisplayFor(model => model.emp_name)
+</div>
+<div class="form-group">
+    Do you want delete this employee?
+</div>
+<a href="/Employee/DeleteAjax/@Model.emp_id" data-gridid="EmployeeGrid" class="btn btn-primary lnkAppDelete">Delete</a>

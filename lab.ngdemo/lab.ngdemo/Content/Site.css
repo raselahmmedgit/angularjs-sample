@@ -22,3 +22,16 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*
+UI Loading
+*/
+.loading {
+    height: 32px !important;
+    width: 32px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+.loading > img {
+  padding: 0px !important;
+}

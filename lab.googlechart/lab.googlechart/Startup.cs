@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(lab.ngdemo.Startup))]
-namespace lab.ngdemo
+[assembly: OwinStartupAttribute(typeof(lab.googlechart.Startup))]
+namespace lab.googlechart
 {
     public partial class Startup
     {

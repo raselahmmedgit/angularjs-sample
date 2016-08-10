@@ -1,0 +1,51 @@
+﻿@model lab.ngdemo.postgresql.ViewModels.LogOnViewModel
+@{
+    ViewBag.Title = "Log On";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Log On</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            Please enter your user name and password. @Html.ActionLink("Register", "Register")
+            if you don't have an account.
+        </p>
+    </div>
+</div>
+<div class="row form-horizontal col-md-12">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+        <h4>Log on information.</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.RememberMe, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(m => m.RememberMe, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Log On" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

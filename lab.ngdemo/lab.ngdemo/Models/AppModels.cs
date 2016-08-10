@@ -6,7 +6,16 @@ using System.Web;
 
 namespace lab.ngdemo.Models
 {
-    public class User
+    public class BaseModel
+    {
+        public string SuccessMessage { get; set; }
+
+        public string ErrorMessage { get; set; }
+
+        public bool IsSuccess { get; set; }
+    }
+
+    public class User : BaseModel
     {
         public User()
         {
@@ -56,7 +65,7 @@ namespace lab.ngdemo.Models
         public virtual ICollection<Role> Roles { get; set; }
     }
 
-    public class Role
+    public class Role : BaseModel
     {
         [Key]
         [Display(Name = "Role Name")]
@@ -65,4 +74,35 @@ namespace lab.ngdemo.Models
         public virtual ICollection<User> Users { get; set; }
     }
 
+    public class Student : BaseModel
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Display(Name = "Email Address")]
+        public string EmailAddress { get; set; }
+
+        [Display(Name = "Mobile")]
+        public string Mobile { get; set; }
+
+    }
+
+    public class Employee : BaseModel
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Display(Name = "Email Address")]
+        public string EmailAddress { get; set; }
+
+        [Display(Name = "Mobile")]
+        public string Mobile { get; set; }
+
+    }
 }

@@ -43,15 +43,6 @@
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Mono.Security">
-      <HintPath>..\packages\Npgsql.2.2.7\lib\net45\Mono.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Npgsql">
-      <HintPath>..\packages\Npgsql.2.2.7\lib\net45\Npgsql.dll</HintPath>
-    </Reference>
-    <Reference Include="Npgsql.EntityFramework">
-      <HintPath>..\packages\Npgsql.EntityFramework.2.2.7\lib\net45\Npgsql.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -184,6 +175,9 @@
     <Compile Include="BootStrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,7 +191,9 @@
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\AppModels.cs" />
     <Compile Include="Models\CacheManagement\CacheManager.cs" />
+    <Compile Include="Models\CacheManagement\EmployeeCacheHelper.cs" />
     <Compile Include="Models\CacheManagement\RoleCacheHelper.cs" />
+    <Compile Include="Models\CacheManagement\StudentCacheHelper.cs" />
     <Compile Include="Models\CacheManagement\UserCacheHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -210,8 +206,13 @@
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\ajax-loader.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ng-grid.css" />
+    <Content Include="Content\ng-grid.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -241,6 +242,10 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\App\App.js" />
+    <Content Include="Scripts\App\Employee.js" />
+    <Content Include="Scripts\App\Student.js" />
+    <Content Include="Scripts\App\Role.js" />
     <Content Include="Scripts\App\TreeView.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -256,6 +261,8 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1009,8 +1016,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ng-grid.js" />
+    <Content Include="Scripts\ng-grid.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1032,11 +1043,13 @@
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Home\TreeView.cshtml" />
     <Content Include="Views\Shared\AccessDenied.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

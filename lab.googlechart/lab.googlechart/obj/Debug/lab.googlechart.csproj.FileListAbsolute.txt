@@ -69,6 +69,6 @@ C:\Users\user\Documents\GitHub\angularjs-sample\lab.googlechart\lab.googlechart\
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.googlechart\lab.googlechart\bin\fr\Npgsql.resources.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.googlechart\lab.googlechart\bin\ja\Npgsql.resources.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.googlechart\lab.googlechart\bin\zh-CN\Npgsql.resources.dll
-C:\Users\user\Documents\GitHub\angularjs-sample\lab.googlechart\lab.googlechart\obj\Debug\lab.googlechart.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.googlechart\lab.googlechart\obj\Debug\lab.ngdemo.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.googlechart\lab.googlechart\obj\Debug\lab.ngdemo.pdb
+C:\Users\user\Documents\GitHub\angularjs-sample\lab.googlechart\lab.googlechart\obj\Debug\lab.googlechart.csprojResolveAssemblyReference.cache

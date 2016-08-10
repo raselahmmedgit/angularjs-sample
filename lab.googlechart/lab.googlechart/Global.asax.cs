@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace lab.ngdemo
+namespace lab.googlechart
 {
     public class MvcApplication : System.Web.HttpApplication
     {

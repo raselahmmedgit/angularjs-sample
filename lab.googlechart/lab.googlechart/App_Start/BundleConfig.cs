@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace lab.ngdemo
+namespace lab.googlechart
 {
     public class BundleConfig
     {

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Web;
 
-namespace lab.ngdemo.Helpers
+namespace lab.googlechart.Helpers
 {
     public static class SessionHelper
     {

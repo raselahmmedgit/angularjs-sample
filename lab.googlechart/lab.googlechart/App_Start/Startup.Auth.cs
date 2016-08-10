@@ -1,6 +1,6 @@
 ﻿using Owin;
 
-namespace lab.ngdemo
+namespace lab.googlechart
 {
     public partial class Startup
     {

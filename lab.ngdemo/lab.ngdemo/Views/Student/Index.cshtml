@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Student</h2>
+    </div>
+</div>
+<hr />
+<div class="row" ng-controller="StudentController">
+
+    <!--Add/Edit-->
+    <div class="form-horizontal col-md-12" ng-show="StudentFormShow">
+        <form name="StudentForm" ng-submit="SubmitStudentForm()" novalidate>
+            <div class="form-group" ng-class="{ 'has-error' : StudentForm.Name.$invalid && !StudentForm.Name.$pristine }">
+                <label class="col-md-2 control-label">Name</label>
+                <div class="col-md-10">
+                    <input type="text" name="Name" ng-model="Student.Name" class="form-control" required>
+                </div>
+                <div class="col-md-offset-2 col-md-10 help-block" ng-show="StudentForm.Name.$invalid && !StudentForm.Name.$pristine">Name is required.</div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Email Address</label>
+                <div class="col-md-10">
+                    <input type="text" name="EmailAddress" ng-model="Student.EmailAddress" class="form-control" required>
+                </div>
+                <div class="col-md-offset-2 col-md-10 help-block" ng-show="StudentForm.EmailAddress.$invalid && !StudentForm.EmailAddress.$pristine">Enter a valid email address.</div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Mobile</label>
+                <div class="col-md-10">
+                    <input type="text" name="Mobile" ng-model="Student.Mobile" ng-minlength="4" ng-maxlength="12" class="form-control" required>
+                </div>
+                <div class="col-md-offset-2 col-md-10 help-block" ng-show="StudentForm.Mobile.$invalid && !StudentForm.Mobile.$pristine">Mobile is required.</div>
+                <div class="col-md-offset-2 col-md-10 help-block" ng-show="StudentForm.Mobile.$error.minlength">Mobile is too short.</div>
+                <div class="col-md-offset-2 col-md-10 help-block" ng-show="StudentForm.Mobile.$error.maxlength">Mobile is too long.</div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary" ng-disabled="StudentForm.$invalid">Save</button>
+                    <button type="button" class="btn btn-warning" ng-click="Cancel()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="col-md-12">
+        <div class="col-md-offset-10">
+            <input type="button" value="Add" class="btn btn-primary" ng-click="Add()" />
+        </div>
+    </div>
+    <hr />
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Email Address</th>
+                    <th>Mobile</th>
+                    <th>Action</th>
+                </tr>
+                <tr ng-repeat="student in Students">
+                    <td>{{student.Name}}</td>
+                    <td>{{student.EmailAddress}}</td>
+                    <td>{{student.Mobile}}</td>
+                    <td style="width: 200px;">
+                        <button class="btn btn-success" ng-click="Edit($index)">Edit</button>
+                        <button class="btn btn-danger" ng-click="Delete($index)">Delete</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="~/Scripts/App/Student.js"></script>

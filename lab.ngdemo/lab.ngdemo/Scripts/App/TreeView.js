@@ -1,27 +1,26 @@
-﻿var TreeViewApp = angular.module('TreeViewApp', []);
+﻿var treeViewApp = angular.module('TreeViewApp', []);
 
-TreeViewApp.factory('TreeViewService', ['$http', function ($http) {
+treeViewApp.factory('TreeViewService', ['$http', function ($http) {
 
-    var TreeViewService = {};
-    TreeViewService.getTreeViews = function () {
+    var treeViewService = {};
+    treeViewService.getTreeViews = function () {
         return $http.get('/Home/TreeViewAjax');
     };
-    return TreeViewService;
+    return treeViewService;
 
 }]);
 
-TreeViewApp.controller('TreeViewController', function ($scope, TreeViewService) {
+treeViewApp.controller('TreeViewController', function ($scope, treeViewService) {
 
     getTreeViews();
     function getTreeViews() {
-        TreeViewService.getTreeViews()
+        treeViewService.getTreeViews()
             .success(function (dataList) {
                 $scope.treeViews = dataList;
-                console.log($scope.treeViews);
             })
             .error(function (error) {
-                $scope.status = 'Unable to load customer data: ' + error.message;
-                console.log($scope.status);
+                $scope.status = error;
+                App.toastrNotifier($scope.status, false);
             });
     }
     

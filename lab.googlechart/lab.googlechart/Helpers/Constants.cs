@@ -1,6 +1,6 @@
-﻿using lab.ngdemo.Helpers;
+﻿using lab.googlechart.Helpers;
 
-namespace lab.ngdemo
+namespace lab.googlechart
 {
     public static class Constants
     {

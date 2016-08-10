@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace lab.ngdemo.Helpers
+namespace lab.googlechart.Helpers
 {
     public static class ExceptionHelper
     {

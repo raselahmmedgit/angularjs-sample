@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using lab.ngdemo.ViewModels;
 
-namespace lab.ngdemo.Controllers
+namespace lab.googlechart.Controllers
 {
     public class HomeController : Controller
     {
@@ -10,6 +12,11 @@ namespace lab.ngdemo.Controllers
             return View();
         }
         public ActionResult LineChart()
+        {
+            return View();
+        }
+
+        public ActionResult PieChart()
         {
             return View();
         }
@@ -68,6 +75,25 @@ namespace lab.ngdemo.Controllers
             //]
             //}
             /////
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        [OutputCache(Duration = 0)]
+        public ActionResult PieChartAjax()
+        {
+            //List<object> data = new List<object>();
+            //data.Add(new[] { "Name", "Value" });
+            //data.Add(new[] { "Verified Contact", Convert.ToString(250) });
+            //data.Add(new[] { "Verified Vendor", Convert.ToString(100) });
+            //data.Add(new[] { "Verified Client", Convert.ToString(80) });
+            //data.Add(new[] { "Verified Company", Convert.ToString(500) });
+
+            List<PieChartViewModel> data = new List<PieChartViewModel>();
+            data.Add(new PieChartViewModel() { Name = "Verified Contact", Value = 250 });
+            data.Add(new PieChartViewModel() { Name = "Verified Vendor", Value = 100 });
+            data.Add(new PieChartViewModel() { Name = "Verified Client", Value = 80 });
+            data.Add(new PieChartViewModel() { Name = "Verified Company", Value = 500 });
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
