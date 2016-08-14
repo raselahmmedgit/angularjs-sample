@@ -187,3 +187,4 @@ C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo\lab.ngdemo\bin\Micros
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo\lab.ngdemo\obj\Debug\lab.ngdemo.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo\lab.ngdemo\obj\Debug\lab.ngdemo.dll
 C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo\lab.ngdemo\obj\Debug\lab.ngdemo.pdb
+C:\Users\user\Documents\GitHub\angularjs-sample\lab.ngdemo\lab.ngdemo\bin\Elmah.dll
