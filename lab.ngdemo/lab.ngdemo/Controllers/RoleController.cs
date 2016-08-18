@@ -1,4 +1,5 @@
-﻿using lab.ngdemo.Models;
+﻿using lab.ngdemo.Helpers;
+using lab.ngdemo.Models;
 using lab.ngdemo.Models.CacheManagement;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,9 @@ using System.Web.Mvc;
 
 namespace lab.ngdemo.Controllers
 {
-    public class RoleController : Controller
+    //[UserAuthorize]
+    [Authorize]
+    public class RoleController : Controller//BaseController
     {
         private RoleCacheHelper _roleCacheHelper = new RoleCacheHelper();
 
