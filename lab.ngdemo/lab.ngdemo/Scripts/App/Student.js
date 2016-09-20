@@ -81,23 +81,29 @@ angularModule.controller('StudentController', ['StudentService', '$scope', funct
     }
 
     $scope.Delete = function (index) {
-        var id = $scope.Students[index].StudentName;
+        var id = $scope.Students[index].Id;
 
-        StudentService.Delete(id).success(function (data) {
+        bootbox.confirm("Do you want to delete this ?", function (isConfirm) {
+            if (isConfirm) {
+                StudentService.Delete(id).success(function (data) {
 
-            //$scope.Students.splice(index);
+                    //$scope.Students.splice(index);
 
-            if (data.IsSuccess) {
-                App.toastrNotifier(data.SuccessMessage, true);
-            } else {
-                App.toastrNotifier(data.ErrorMessage, false);
+                    if (data.IsSuccess) {
+                        App.toastrNotifier(data.SuccessMessage, true);
+                    } else {
+                        App.toastrNotifier(data.ErrorMessage, false);
+                    }
+
+                }).error(function (error) {
+                    App.toastrNotifier(error, false);
+                });
+
+                $scope.Refresh();
             }
-
-        }).error(function (error) {
-            App.toastrNotifier(error, false);
         });
 
-        $scope.Refresh();
+        
     };
 
     $scope.Save = function () {

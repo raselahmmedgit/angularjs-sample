@@ -74,7 +74,7 @@ namespace lab.ngdemo.Controllers
                 {
                     _studentCacheHelper.DeleteStudent(student);
                     student.IsSuccess = true;
-                    student.SuccessMessage = Constants.Messages.UpdateSuccess;
+                    student.SuccessMessage = Constants.Messages.DeleteSuccess;
                 }
                 else
                 {

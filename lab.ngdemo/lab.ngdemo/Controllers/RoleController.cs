@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace lab.ngdemo.Controllers
 {
     //[UserAuthorize]
-    [Authorize]
+    //[Authorize]
     public class RoleController : Controller//BaseController
     {
         private RoleCacheHelper _roleCacheHelper = new RoleCacheHelper();
@@ -77,7 +77,7 @@ namespace lab.ngdemo.Controllers
                 {
                     _roleCacheHelper.DeleteRole(role);
                     role.IsSuccess = true;
-                    role.SuccessMessage = Constants.Messages.UpdateSuccess;
+                    role.SuccessMessage = Constants.Messages.DeleteSuccess;
                 }
                 else
                 {

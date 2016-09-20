@@ -72,21 +72,27 @@ angularModule.controller('RoleController', ['RoleService', '$scope', function (R
     $scope.Delete = function (index) {
         var roleName = $scope.Roles[index].RoleName;
 
-        RoleService.Delete(roleName).success(function (data) {
+        bootbox.confirm("Do you want to delete this ?", function (isConfirm) {
+            if (isConfirm) {
+                RoleService.Delete(roleName).success(function (data) {
 
-            //$scope.Roles.splice(index);
+                    //$scope.Roles.splice(index);
 
-            if (data.IsSuccess) {
-                App.toastrNotifier(data.SuccessMessage, true);
-            } else {
-                App.toastrNotifier(data.ErrorMessage, false);
+                    if (data.IsSuccess) {
+                        App.toastrNotifier(data.SuccessMessage, true);
+                    } else {
+                        App.toastrNotifier(data.ErrorMessage, false);
+                    }
+
+                }).error(function (error) {
+                    App.toastrNotifier(error, false);
+                });
+
+                $scope.Refresh();
             }
-
-        }).error(function (error) {
-            App.toastrNotifier(error, false);
         });
 
-        $scope.Refresh();
+        
     };
 
     $scope.Save = function () {
