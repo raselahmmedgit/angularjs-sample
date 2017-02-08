@@ -14,7 +14,7 @@ namespace lab.ngdemo.Models.CacheManagement
         {
             Cache = new CacheManager();
         }
-        public List<Student> GetStudents
+        public IQueryable<Student> GetStudents
         {
             get
             {
@@ -37,7 +37,7 @@ namespace lab.ngdemo.Models.CacheManagement
                     _studentList = CacheManager.ICache.Get(cacheKey) as List<Student>;
                 }
 
-                return _studentList;
+                return _studentList.AsQueryable();
             }
         }
 

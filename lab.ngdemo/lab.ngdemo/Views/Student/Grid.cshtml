@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "ng-grid";
+}
+<style type="text/css">
+    .gridStyle {
+        border: 1px solid rgb(212,212,212);
+        width: 600px; 
+        height: 300px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Student</h2>
+    </div>
+</div>
+<hr />
+<div class="row" ng-controller="StudentController">
+    <div class="col-md-12">
+        <input type="text" ng-model="gridVals.filterOptions.filterText" placeholder="Name" />
+    </div>
+    <hr />
+    <div class="col-md-12">
+        <div ng-grid="gridOptions" class="gridStyle"></div>
+    </div>
+</div>
+
+<script src="~/Scripts/App/StudentGrid.js"></script>

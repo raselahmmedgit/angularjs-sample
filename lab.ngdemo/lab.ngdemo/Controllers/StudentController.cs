@@ -1,10 +1,12 @@
-﻿using lab.ngdemo.Models;
+﻿using lab.ngdemo.Helpers;
+using lab.ngdemo.Models;
 using lab.ngdemo.Models.CacheManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace lab.ngdemo.Controllers
 {
@@ -91,5 +93,54 @@ namespace lab.ngdemo.Controllers
             return Json(student, JsonRequestBehavior.DenyGet);
 
         }
+
+        #region ng-grid
+
+        // GET: Student
+        public ActionResult Grid()
+        {
+            return View();
+        }
+
+        public ActionResult GetPage(pageParams p)
+        {
+            if (p.page == 0)
+            {
+                p.page = 1;
+            }
+
+            var students = new Func<IQueryable<Student>>(() =>
+            {
+                if (string.IsNullOrWhiteSpace(p.filterText))
+                    return _studentCacheHelper.GetStudents;
+                else
+                    return _studentCacheHelper.GetStudents.Where(x => x.Name.Contains(p.filterText));
+            })();
+
+            if (string.IsNullOrWhiteSpace(p.sortColumn) || string.IsNullOrWhiteSpace(p.sortDirection))
+            {
+                students = students.OrderBy(x => x.Id);
+            }
+            else
+            {
+                //students = students.OrderBy(p.sortColumn + " " + p.sortDirection);
+            }
+
+            var count = students.Count();
+            var pagedCustomers = students.Skip((p.page - 1) * p.pageSize).Take(p.pageSize).ToList();
+
+            var pageResult = new pageResult<Student>
+            {
+                data = pagedCustomers,
+                page = p.page,
+                pageSize = p.pageSize,
+                total = count,
+                totalPages = (int)Math.Ceiling((decimal)count / p.pageSize)
+            };
+
+            return Content(JsonConvert.SerializeObject(pageResult), "application/json");
+        }
+
+        #endregion
     }
 }

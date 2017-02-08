@@ -194,6 +194,7 @@
     <Compile Include="Helpers\ExceptionHelper.cs" />
     <Compile Include="Helpers\LoggerHelper.cs" />
     <Compile Include="Helpers\MessageResourceHelper.cs" />
+    <Compile Include="Helpers\NGGridHelper.cs" />
     <Compile Include="Helpers\SelectListItemExtension.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Helpers\SiteConfigurationReader.cs" />
@@ -402,6 +403,7 @@
     <Content Include="Scripts\App\Employee.js" />
     <Content Include="Scripts\App\Student.js" />
     <Content Include="Scripts\App\Role.js" />
+    <Content Include="Scripts\App\StudentGrid.js" />
     <Content Include="Scripts\App\TreeView.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -1282,6 +1284,7 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Student\Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
