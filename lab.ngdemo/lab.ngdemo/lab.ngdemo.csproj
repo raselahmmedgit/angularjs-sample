@@ -191,6 +191,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\CustomGridHelper.cs" />
     <Compile Include="Helpers\ExceptionHelper.cs" />
     <Compile Include="Helpers\LoggerHelper.cs" />
     <Compile Include="Helpers\MessageResourceHelper.cs" />
@@ -401,6 +402,8 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\App\App.js" />
     <Content Include="Scripts\App\Employee.js" />
+    <Content Include="Scripts\App\StudentCustomGridNew.js" />
+    <Content Include="Scripts\App\StudentCustomGrid.js" />
     <Content Include="Scripts\App\Student.js" />
     <Content Include="Scripts\App\Role.js" />
     <Content Include="Scripts\App\StudentGrid.js" />
@@ -1259,6 +1262,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\ui-pagination.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1285,6 +1289,8 @@
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Student\Grid.cshtml" />
+    <Content Include="Views\Student\CustomGrid.cshtml" />
+    <Content Include="Views\Student\CustomGridNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,127 @@
+﻿@{
+    ViewBag.Title = "Custom Grid";
+}
+<style type="text/css">
+    
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Student</h2>
+    </div>
+</div>
+<hr />
+<div class="row" ng-controller="StudentController">
+
+    <!--Add/Edit-->
+    <div class="form-horizontal col-md-12" ng-show="StudentFormShow">
+        <form name="StudentForm" ng-submit="SubmitStudentForm()" novalidate>
+            <div class="form-group" ng-class="{ 'has-error' : StudentForm.Name.$invalid && !StudentForm.Name.$pristine }">
+                <label class="col-md-2 control-label">Name</label>
+                <div class="col-md-10">
+                    <input type="text" name="Name" ng-model="Student.Name" class="form-control" required>
+                </div>
+                <div class="col-md-offset-2 col-md-10 help-block" ng-show="StudentForm.Name.$invalid && !StudentForm.Name.$pristine">Name is required.</div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Email</label>
+                <div class="col-md-10">
+                    <input type="text" name="EmailAddress" ng-model="Student.EmailAddress" class="form-control" required>
+                </div>
+                <div class="col-md-offset-2 col-md-10 help-block" ng-show="StudentForm.EmailAddress.$invalid && !StudentForm.EmailAddress.$pristine">Enter a valid email address.</div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Mobile</label>
+                <div class="col-md-10">
+                    <input type="text" name="Mobile" ng-model="Student.Mobile" ng-minlength="4" ng-maxlength="12" class="form-control" required>
+                </div>
+                <div class="col-md-offset-2 col-md-10 help-block" ng-show="StudentForm.Mobile.$invalid && !StudentForm.Mobile.$pristine">Mobile is required.</div>
+                <div class="col-md-offset-2 col-md-10 help-block" ng-show="StudentForm.Mobile.$error.minlength">Mobile is too short.</div>
+                <div class="col-md-offset-2 col-md-10 help-block" ng-show="StudentForm.Mobile.$error.maxlength">Mobile is too long.</div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary" ng-disabled="StudentForm.$invalid">Save</button>
+                    <button type="button" class="btn btn-warning" ng-click="Cancel()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-12">
+        <div class="col-md-offset-10">
+            <input type="button" value="Add" class="btn btn-primary" ng-click="Add()" />
+        </div>
+    </div>
+    <hr />
+    <div id="divGrid" class="col-md-12">
+        <div class="form-inline">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" id="Keyword" name="Keyword" class="form-control" placeholder="Search by keyword" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-success" ng-click="Search()" type="button"> Search</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divGrid" class="col-md-12">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Action</th>
+                </tr>
+                <!-- Grid Loading Message -->
+                <tr ng-show="GridLoadingShow">
+                    <td colspan="4">
+                        <b>{{GridLoadingText}}</b>
+                    </td>
+                </tr>
+                <tr ng-repeat="student in Students">
+                    <td>{{student.Name}}</td>
+                    <td>{{student.EmailAddress}}</td>
+                    <td>{{student.Mobile}}</td>
+                    <td style="width: 200px;">
+                        <button class="btn btn-success" ng-click="Edit($index)">Edit</button>
+                        <button class="btn btn-danger" ng-click="Delete($index)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <select id="PageSize" name="PageSize" class="form-control">
+                    <option selected="selected" value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                </select>
+                <span>records per page</span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/App/StudentCustomGridNew.js"></script>
+

@@ -145,6 +145,21 @@ namespace lab.ngdemo.Controllers
 
         #region custom grid
 
+        public ActionResult CustomGrid()
+        {
+            return View();
+        }
+
+        public ActionResult GetCustomGridAjax(CustomGridParam search)
+        {
+            var list = _studentCacheHelper.GetCustomGridStudents;
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CustomGridNew()
+        {
+            return View();
+        }
 
 
         #endregion

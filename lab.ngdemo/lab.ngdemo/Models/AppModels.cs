@@ -13,6 +13,8 @@ namespace lab.ngdemo.Models
         public string ErrorMessage { get; set; }
 
         public bool IsSuccess { get; set; }
+
+        public int Total { get; set; }
     }
 
     public class User : BaseModel
