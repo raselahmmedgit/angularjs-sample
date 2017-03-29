@@ -192,6 +192,7 @@
     </Compile>
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\CustomGridHelper.cs" />
+    <Compile Include="Helpers\DataTableParamModel.cs" />
     <Compile Include="Helpers\ExceptionHelper.cs" />
     <Compile Include="Helpers\LoggerHelper.cs" />
     <Compile Include="Helpers\MessageResourceHelper.cs" />
@@ -401,6 +402,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\App\App.js" />
+    <Content Include="Scripts\App\EmployeeDataTables.js" />
     <Content Include="Scripts\App\Employee.js" />
     <Content Include="Scripts\App\StudentCustomGridNew.js" />
     <Content Include="Scripts\App\StudentCustomGrid.js" />
@@ -1291,6 +1293,7 @@
     <Content Include="Views\Student\Grid.cshtml" />
     <Content Include="Views\Student\CustomGrid.cshtml" />
     <Content Include="Views\Student\CustomGridNew.cshtml" />
+    <Content Include="Views\Employee\DataTables.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

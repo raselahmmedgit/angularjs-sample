@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using lab.ngdemo.DataTablesHelpers;
+using lab.ngdemo.Helpers;
 using lab.ngdemo.Models;
 using lab.ngdemo.Models.CacheManagement;
 
@@ -139,5 +140,60 @@ namespace lab.ngdemo.Controllers
             return Json(employee, JsonRequestBehavior.DenyGet);
 
         }
+
+        public ActionResult DataTables()
+        {
+            return View();
+        }
+
+        // for display datatable
+        [HttpGet]
+        public ActionResult GetDataTablesAjax(DataTableParamModel param)
+        {
+            var list = _employeeCacheHelper.GetCustomGridEmployees.ToList();
+
+            IEnumerable<Employee> filteredList;
+
+            if (!string.IsNullOrEmpty(param.sSearch))
+            {
+                filteredList = list.Where(cat => (cat.Name ?? "").Contains(param.sSearch)).ToList();
+            }
+            else
+            {
+                filteredList = list;
+            }
+
+            var viewOdjects = filteredList.Skip(param.iDisplayStart).Take(param.iDisplayLength);
+
+            var result = viewOdjects.Select(emp => new[] { emp.Name, emp.EmailAddress, emp.Mobile, Convert.ToString(emp.Id)});
+
+            return Json(new
+            {
+                sEcho = param.sEcho,
+                iTotalRecords = list.Count(),
+                iTotalDisplayRecords = filteredList.Count(),
+                aaData = result
+            },
+                            JsonRequestBehavior.AllowGet);
+        }
+
+        // for display datatable
+        [HttpGet]
+        public ActionResult GetDataTablesNewAjax(DataTableParamModel param)
+        {
+            var list = _employeeCacheHelper.GetEmployeesBySearch(param);
+
+            var result = list.Select(emp => new[] { Convert.ToString(emp.Id), emp.Name, emp.EmailAddress, emp.Mobile });
+
+            return Json(new
+            {
+                sEcho = param.sEcho,
+                iTotalRecords = list.FirstOrDefault().Total,
+                iTotalDisplayRecords = list.Count(),
+                aaData = result
+            },
+                            JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
