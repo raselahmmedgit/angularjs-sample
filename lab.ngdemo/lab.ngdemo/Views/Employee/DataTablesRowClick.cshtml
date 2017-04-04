@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Employee ng with DataTables";
+}
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/responsive.dataTables.min.css" rel="stylesheet" />
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
+
+<style type="text/css">
+    div {
+        margin-top: 15px;
+        padding: 5px;
+    }
+
+        div.borderdiv {
+            border: 1px solid black;
+        }
+
+    td {
+        border: 1px solid black;
+        padding: 2px;
+    }
+
+    .success {
+        background-color: green;
+    }
+</style>
+
+<div ng-controller="EmployeeController as ctrl">
+    <div id="buttondiv" class=borderdiv>
+        <h4>Button with ng-click</h4>
+        <button type="button" ng-click="ctrl.buttonAlert()">Test Alert</button>
+    </div>
+
+    <div id="htmltablediv" class="borderdiv">
+        <h4>HTML Table with ng-click</h4>
+        <table>
+            <tr>
+                <td>Last Name</td>
+                <td>Actions</td>
+            </tr>
+            <tr>
+                <td>Doe</td>
+                <td>
+                    <button ng-click="ctrl.htmlAlert()">
+                        Test Alert
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="datatablediv" class="borderdiv">
+        <h4>DataTables with ng-click</h4>
+        <table id="report" class="display"></table>
+    </div>
+
+</div>
+
+<script src="~/Scripts/App/EmployeeDataTablesRowClick.js"></script>
+

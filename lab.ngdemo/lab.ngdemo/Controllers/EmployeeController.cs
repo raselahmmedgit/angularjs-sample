@@ -146,6 +146,16 @@ namespace lab.ngdemo.Controllers
             return View();
         }
 
+        public ActionResult DataTablesRowClick()
+        {
+            return View();
+        }
+
+        public ActionResult DataTablesNew()
+        {
+            return View();
+        }
+        
         // for display datatable
         [HttpGet]
         public ActionResult GetDataTablesAjax(DataTableParamModel param)

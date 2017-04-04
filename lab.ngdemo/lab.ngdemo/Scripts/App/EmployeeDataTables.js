@@ -56,12 +56,17 @@ angularModule.service('EmployeeService', ['$http', function ($http) {
                         //console.log(data);
                         //console.log(type);
                         //console.log(row);
-                        return '<a class="lnkEmployeeDetail btn btn-info btn-sm" href=\"/Employee/Details/' +
-                            data + '\" >Details</a>  ' +
-                            '<a class="lnkEmployeeEdit btn btn-primary btn-sm" href=\"/Employee/Edit/' +
-                            data + '\" >Edit</a>  ' +
-                            '<a class="lnkEmployeeDelete btn btn-danger btn-sm" href=\"/Employee/Delete/' +
-                            data + '\" >Delete</a>';
+
+                        //return '<a class="lnkEmployeeDetail btn btn-info btn-sm" href=\"/Employee/Details/' +
+                        //    data + '\" >Details</a>  ' +
+                        //    '<a class="lnkEmployeeEdit btn btn-primary btn-sm" href=\"/Employee/Edit/' +
+                        //    data + '\" >Edit</a>  ' +
+                        //    '<a class="lnkEmployeeDelete btn btn-danger btn-sm" href=\"/Employee/Delete/' +
+                        //    data + '\" >Delete</a>';
+
+                        return '<a class="lnkEmployeeDetail btn btn-info btn-sm" ng-click="EmployeeController.Details()" href="javascript:;" >Details</a>  ' +
+                            '<a class="lnkEmployeeEdit btn btn-primary btn-sm" ng-click="EmployeeController.Edit()" href="javascript:;" >Edit</a>  ' +
+                            '<a class="lnkEmployeeDelete btn btn-danger btn-sm" ng-click="EmployeeController.Delete()" href="javascript:;" >Delete</a>';
 
                     }
                 }
@@ -98,6 +103,10 @@ angularModule.controller('EmployeeController', ['EmployeeService', '$scope', fun
     employeeController.Add = false;
     employeeController.Edit = false;
 
+    employeeController.DetailsUrl = "/Employee/Details/";
+    employeeController.EditUrl = "/Employee/Edit/";
+    employeeController.DeleteUrl = "/Employee/Delete/";
+
     $scope.EmployeeFormShow = false;
     $scope.Employees = [];
     $scope.Employee = {};
@@ -113,10 +122,77 @@ angularModule.controller('EmployeeController', ['EmployeeService', '$scope', fun
     //    });
     //};
 
+    var employeeDataTable;
     employeeList();
     function employeeList() {
+
         var iDisplayLength = 5;
-        EmployeeService.LoadDataTable(iDisplayLength);
+        //EmployeeService.LoadDataTable(iDisplayLength);
+
+        employeeDataTable = $('#employeeDataTable').dataTable({
+            "bJQueryUI": true,
+            "bAutoWidth": true,
+            "sPaginationType": "full_numbers",
+            "bPaginate": true,
+            "iDisplayLength": iDisplayLength,
+            "bSort": true,
+            "oLanguage": {
+                "sLengthMenu": "Display _MENU_ records per page",
+                "sZeroRecords": "Nothing found - Sorry",
+                "sInfo": "Showing _START_ to _END_ of _TOTAL_ records",
+                "sInfoEmpty": "Showing 0 to 0 of 0 records",
+                "sInfoFiltered": "(filtered from _MAX_ total records)"
+            },
+            "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": "/Employee/GetDataTablesAjax",
+            "sServerMethod": "GET",
+            "aoColumns": [
+                //{ "sName": "Id", "bVisible": false, "bSearchable": false, "bSortable": false },
+                { "sName": "Name" },
+                { "sName": "EmailAddress" },
+                { "sName": "Mobile" },
+                {
+                    "sName": "Id",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "mRender": function (data, type, row) {
+                        //console.log(data);
+                        //console.log(type);
+                        //console.log(row);
+
+                        //return '<a class="lnkEmployeeDetail btn btn-info btn-sm" href=\"/Employee/Details/' +
+                        //    data + '\" >Details</a>  ' +
+                        //    '<a class="lnkEmployeeEdit btn btn-primary btn-sm" href=\"/Employee/Edit/' +
+                        //    data + '\" >Edit</a>  ' +
+                        //    '<a class="lnkEmployeeDelete btn btn-danger btn-sm" href=\"/Employee/Delete/' +
+                        //    data + '\" >Delete</a>';
+
+                        return '<a class="lnkEmployeeDetail btn btn-info btn-sm" ng-click="EmployeeController.Details()" href="javascript:;" >Details</a>  ' +
+                            '<a class="lnkEmployeeEdit btn btn-primary btn-sm" ng-click="EmployeeController.Edit()" href="javascript:;" >Edit</a>  ' +
+                            '<a class="lnkEmployeeDelete btn btn-danger btn-sm" ng-click="EmployeeController.Delete()" href="javascript:;" >Delete</a>';
+
+                    }
+                }
+            ]
+            //"columnDefs": [{
+            //    "targets": 3,
+            //    "data": null,
+            //    "render": function (data, type, row) {
+            //        //console.log(data);
+            //        //console.log(type);
+            //        //console.log(row);
+            //        return '<a class="lnkEmployeeDetail btn btn-info btn-sm" href=\"/Employee/Details/' +
+            //            data[3] + '\" >Details</a>  ' +
+            //            '<a class="lnkEmployeeEdit btn btn-primary btn-sm" href=\"/Employee/Edit/' +
+            //            data[3] + '\" >Edit</a>  ' +
+            //            '<a class="lnkEmployeeDelete btn btn-danger btn-sm" href=\"/Employee/Delete/' +
+            //            data[3] + '\" >Delete</a>';
+
+            //    },
+            //}]
+        });
+
     };
 
     $scope.Add = function () {
@@ -140,6 +216,13 @@ angularModule.controller('EmployeeController', ['EmployeeService', '$scope', fun
             App.toastrNotifier('Hello!', false);
         }
 
+    };
+
+    $scope.Details = function (index) {
+        initialEdit();
+        employeeController.Current = index;
+        //angular.copy($scope.Employees[index], Current);
+        angular.copy($scope.Employees[index], $scope.Employee);
     };
 
     $scope.Edit = function (index) {
@@ -218,7 +301,7 @@ angularModule.controller('EmployeeController', ['EmployeeService', '$scope', fun
     };
 
     $scope.Refresh = function () {
-        getList();
+        employeeController.ReLoadDataTable();
     };
 
     function resetEmployeeForm() {
@@ -230,150 +313,3 @@ angularModule.controller('EmployeeController', ['EmployeeService', '$scope', fun
 
 }]);
 
-//var Employee = function () {
-
-//    var _employeeDataTale;
-
-//    var _loadDataTale = function() {
-        
-//        //start DataTable Script
-
-//        _employeeDataTale = $('#employeeDataTable').dataTable({
-//            "bJQueryUI": true,
-//            "bAutoWidth": true,
-//            "sPaginationType": "full_numbers",
-//            //"bPaginate": true,
-//            //"iDisplayLength": 2,
-//            "bSort": true,
-//            "oLanguage": {
-//                "sLengthMenu": "Display _MENU_ records per page",
-//                "sZeroRecords": "Nothing found - Sorry",
-//                "sInfo": "Showing _START_ to _END_ of _TOTAL_ records",
-//                "sInfoEmpty": "Showing 0 to 0 of 0 records",
-//                "sInfoFiltered": "(filtered from _MAX_ total records)"
-//            },
-//            "bProcessing": true,
-//            "bServerSide": true,
-//            "sAjaxSource": "/Employee/GetDataTablesAjax",
-//            "sServerMethod": "GET",
-//            "aoColumns": [
-//                { "sName": "Name" }
-//                , { "sName": "EmailAddress" }
-//                , { "sName": "Mobile" }
-//                , {
-//                    "sName": "Id",
-//                    "bSearchable": false,
-//                    "bSortable": false,
-//                    "mRender": function (data, type, row) {
-//                        //console.log(data);
-//                        //console.log(type);
-//                        //console.log(row);
-//                        return '<a class="lnkEmployeeDetail btn btn-info btn-sm" href=\"/Employee/Details/' +
-//                                    data + '\" >Details</a>  ' +
-//                                    '<a class="lnkEmployeeEdit btn btn-primary btn-sm" href=\"/Employee/Edit/' +
-//                                    data + '\" >Edit</a>  ' +
-//                                    '<a class="lnkEmployeeDelete btn btn-danger btn-sm" href=\"/Employee/Delete/' +
-//                                    data + '\" >Delete</a>';
-
-//                    }
-//                }
-//            ]
-//            //"columnDefs": [{
-//            //    "targets": 3,
-//            //    "data": null,
-//            //    "render": function (data, type, row) {
-//            //        //console.log(data);
-//            //        //console.log(type);
-//            //        //console.log(row);
-//            //        return '<a class="lnkEmployeeDetail btn btn-info btn-sm" href=\"/Employee/Details/' +
-//            //            data[3] + '\" >Details</a>  ' +
-//            //            '<a class="lnkEmployeeEdit btn btn-primary btn-sm" href=\"/Employee/Edit/' +
-//            //            data[3] + '\" >Edit</a>  ' +
-//            //            '<a class="lnkEmployeeDelete btn btn-danger btn-sm" href=\"/Employee/Delete/' +
-//            //            data[3] + '\" >Delete</a>';
-
-//            //    },
-//            //}]
-//        });
-
-//        //end DataTable Script
-
-//        //-------------------------------------------------------
-//        //start Add, Edit, Delete - Dialog Open Dynamical, Click Event
-
-//    };
-
-//    var _loadEmployeeDataTable = $('#employeeDataTable').dataTable({
-//        "bJQueryUI": true,
-//        "bAutoWidth": true,
-//        "sPaginationType": "full_numbers",
-//        //"bPaginate": true,
-//        //"iDisplayLength": 2,
-//        "bSort": true,
-//        "oLanguage": {
-//            "sLengthMenu": "Display _MENU_ records per page",
-//            "sZeroRecords": "Nothing found - Sorry",
-//            "sInfo": "Showing _START_ to _END_ of _TOTAL_ records",
-//            "sInfoEmpty": "Showing 0 to 0 of 0 records",
-//            "sInfoFiltered": "(filtered from _MAX_ total records)"
-//        },
-//        "bProcessing": true,
-//        "bServerSide": true,
-//        "sAjaxSource": "/Employee/GetDataTablesAjax",
-//        "sServerMethod": "GET",
-//        "aoColumns": [
-//            { "sName": "Name" }
-//            , { "sName": "EmailAddress" }
-//            , { "sName": "Mobile" }
-//            , {
-//                "sName": "Id",
-//                "bSearchable": false,
-//                "bSortable": false,
-//                "mRender": function (data, type, row) {
-//                    //console.log(data);
-//                    //console.log(type);
-//                    //console.log(row);
-//                    return '<a class="lnkEmployeeDetail btn btn-info btn-sm" href=\"/Employee/Details/' +
-//                                data + '\" >Details</a>  ' +
-//                                '<a class="lnkEmployeeEdit btn btn-primary btn-sm" href=\"/Employee/Edit/' +
-//                                data + '\" >Edit</a>  ' +
-//                                '<a class="lnkEmployeeDelete btn btn-danger btn-sm" href=\"/Employee/Delete/' +
-//                                data + '\" >Delete</a>';
-
-//            }}
-//        ]
-//        //"columnDefs": [{
-//        //    "targets": 3,
-//        //    "data": null,
-//        //    "render": function (data, type, row) {
-//        //        //console.log(data);
-//        //        //console.log(type);
-//        //        //console.log(row);
-//        //        return '<a class="lnkEmployeeDetail btn btn-info btn-sm" href=\"/Employee/Details/' +
-//        //            data[3] + '\" >Details</a>  ' +
-//        //            '<a class="lnkEmployeeEdit btn btn-primary btn-sm" href=\"/Employee/Edit/' +
-//        //            data[3] + '\" >Edit</a>  ' +
-//        //            '<a class="lnkEmployeeDelete btn btn-danger btn-sm" href=\"/Employee/Delete/' +
-//        //            data[3] + '\" >Delete</a>';
-
-//        //    },
-//        //}]
-//    });
-
-//    var _actionHandler = function () {
-
-//    };
-
-//    var _initializeForm = function () {
-//        //_loadEmployeeDataTable();
-//    };
-
-//    var initializeEmployee = function () {
-//        _initializeForm();
-//        _actionHandler();
-//    };
-
-//    return {
-//        init: initializeEmployee
-//    };
-//}();

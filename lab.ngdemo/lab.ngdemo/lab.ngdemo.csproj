@@ -402,6 +402,8 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\App\App.js" />
+    <Content Include="Scripts\App\EmployeeDataTablesNew.js" />
+    <Content Include="Scripts\App\EmployeeDataTablesRowClick.js" />
     <Content Include="Scripts\App\EmployeeDataTables.js" />
     <Content Include="Scripts\App\Employee.js" />
     <Content Include="Scripts\App\StudentCustomGridNew.js" />
@@ -1294,6 +1296,8 @@
     <Content Include="Views\Student\CustomGrid.cshtml" />
     <Content Include="Views\Student\CustomGridNew.cshtml" />
     <Content Include="Views\Employee\DataTables.cshtml" />
+    <Content Include="Views\Employee\DataTablesRowClick.cshtml" />
+    <Content Include="Views\Employee\DataTablesNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

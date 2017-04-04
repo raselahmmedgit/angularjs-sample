@@ -219,6 +219,11 @@ var App = function () {
         toastr['info'](msg, "Info !");
     };
 
+    var displayLength = function () {
+        var _displayLength = 5;
+        return _displayLength;
+    };
+
     var actionHandler = function () {
 
         modalHandler();
@@ -230,6 +235,17 @@ var App = function () {
         actionHandler();
     };
 
+    var getAjax = function (getUrl, param) {
+
+        $.getJSON(getUrl, param).done(function (data) {
+            return data;
+        }).fail(function (jqxhr, textStatus, error) {
+            var msg = textStatus + ", " + error;
+            toastr['error'](msg, "Error !");
+        });
+
+    };
+    
     return {
         init: initializeApp,
         modalShow: modalShow,
@@ -239,6 +255,8 @@ var App = function () {
         sendAjaxRequest: sendAjaxRequest,
         loadDropdown: loadDropdown,
         toastrNotifier: toastrNotifier,
-        toastrNotifierInfo: toastrNotifierInfo
+        toastrNotifierInfo: toastrNotifierInfo,
+        displayLength: displayLength,
+        getAjax: getAjax
     };
 }();

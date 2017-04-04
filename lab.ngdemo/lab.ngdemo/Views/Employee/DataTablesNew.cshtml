@@ -12,11 +12,11 @@
     </div>
 </div>
 <hr />
-<div class="row" ng-controller="EmployeeController">
+<div class="row" ng-controller="EmployeeController as ctrl">
 
     <!--Add/Edit-->
     <div class="form-horizontal col-md-12" ng-show="EmployeeFormShow">
-        <form name="EmployeeForm" ng-submit="SubmitEmployeeForm()" novalidate>
+        <form name="EmployeeForm" ng-submit="ctrl.SubmitEmployeeForm()" novalidate>
             <div class="form-group" ng-class="{ 'has-error' : EmployeeForm.Name.$invalid && !EmployeeForm.Name.$pristine }">
                 <label class="col-md-2 control-label">Name</label>
                 <div class="col-md-10">
@@ -42,8 +42,8 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-primary" ng-disabled="EmployeeForm.$invalid">Save</button>
-                    <button type="button" class="btn btn-warning" ng-click="Cancel()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" ng-show="EmployeeSaveShow" ng-disabled="EmployeeForm.$invalid">Save</button>
+                    <button type="button" class="btn btn-warning" ng-click="ctrl.Cancel()">Cancel</button>
                 </div>
             </div>
         </form>
@@ -51,12 +51,12 @@
 
     <div class="col-md-12">
         <div class="col-md-offset-10">
-            <input type="button" value="Add" class="btn btn-primary" ng-click="Add()" />
+            <input type="button" value="Add" class="btn btn-primary" ng-click="ctrl.Add()" />
         </div>
     </div>
     <hr />
     <div class="col-md-12">
-        
+
         <table id="employeeDataTable" class="table table-striped table-bordered dt-responsive nowrap">
             <thead>
                 <tr>
@@ -69,28 +69,8 @@
             <tbody></tbody>
         </table>
 
-        @*<table class="table table-striped">
-            <tbody>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Mobile</th>
-                    <th>Action</th>
-                </tr>
-                <tr ng-repeat="student in Employees">
-                    <td>{{student.Name}}</td>
-                    <td>{{student.EmailAddress}}</td>
-                    <td>{{student.Mobile}}</td>
-                    <td style="width: 200px;">
-                        <button class="btn btn-success" ng-click="Edit($index)">Edit</button>
-                        <button class="btn btn-danger" ng-click="Delete($index)">Delete</button>
-                    </td>
-
-                </tr>
-            </tbody>
-        </table>*@
     </div>
 
 </div>
 
-<script src="~/Scripts/App/EmployeeDataTables.js"></script>
+<script src="~/Scripts/App/EmployeeDataTablesNew.js"></script>
