@@ -13,6 +13,12 @@ namespace lab.ngdemo.Helpers
         // Text used for filtering
         public string sSearch { get; set; }
 
+        public string sSearch_0 { get; set; }
+
+        public string sSearch_1 { get; set; }
+
+        public string sSearch_2 { get; set; }
+
         // Number of records that should be shown in table
         public int iDisplayLength { get; set; }
 

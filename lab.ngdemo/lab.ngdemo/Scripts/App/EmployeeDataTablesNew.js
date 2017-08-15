@@ -31,8 +31,7 @@ angularModule.controller('EmployeeController', ['$scope', '$compile',
               "iDisplayLength": iDisplayLength,
               "bSort": true,
               "oLanguage": {
-                  "sLengthMenu": "Display _MENU_ records per page",
-                  "sZeroRecords": "Nothing found - Sorry",
+                  "sZeroRecords": "Data not found.",
                   "sInfo": "Showing _START_ to _END_ of _TOTAL_ records",
                   "sInfoEmpty": "Showing 0 to 0 of 0 records",
                   "sInfoFiltered": "(filtered from _MAX_ total records)"

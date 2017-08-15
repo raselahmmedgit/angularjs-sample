@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,8 +40,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Elmah">
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
@@ -402,6 +404,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\App\App.js" />
+    <Content Include="Scripts\App\EmployeeDataTablesFilterColumn.js" />
     <Content Include="Scripts\App\EmployeeDataTablesNew.js" />
     <Content Include="Scripts\App\EmployeeDataTablesRowClick.js" />
     <Content Include="Scripts\App\EmployeeDataTables.js" />
@@ -1298,6 +1301,7 @@
     <Content Include="Views\Employee\DataTables.cshtml" />
     <Content Include="Views\Employee\DataTablesRowClick.cshtml" />
     <Content Include="Views\Employee\DataTablesNew.cshtml" />
+    <Content Include="Views\Employee\DataTablesFilterColumn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

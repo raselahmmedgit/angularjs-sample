@@ -155,18 +155,32 @@ namespace lab.ngdemo.Controllers
         {
             return View();
         }
-        
+
+        public ActionResult DataTablesFilterColumn()
+        {
+            return View();
+        }
+
         // for display datatable
         [HttpGet]
         public ActionResult GetDataTablesAjax(DataTableParamModel param)
         {
             var list = _employeeCacheHelper.GetCustomGridEmployees.ToList();
 
+            //var NameFilter = Convert.ToString(Request["sSearch_0"]);
+            //var EmailFilter = Convert.ToString(Request["sSearch_1"]);
+            //var MobileFilter = Convert.ToString(Request["sSearch_2"]);
+
             IEnumerable<Employee> filteredList;
 
             if (!string.IsNullOrEmpty(param.sSearch))
             {
                 filteredList = list.Where(cat => (cat.Name ?? "").Contains(param.sSearch)).ToList();
+
+                if (!string.IsNullOrEmpty(param.sSearch_0))
+                {
+                    filteredList = list.Where(cat => (cat.Name ?? "").Contains(param.sSearch_0)).ToList();
+                }
             }
             else
             {
